@@ -1,13 +1,49 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import { StyleSheet, Text, View, Alert, TouchableOpacity } from 'react-native';
 
-export default class App extends React.Component {
+
+const isOnline = require('is-online');
+
+export default class App extends Component {
+
+    componentDidMount() {
+        /**
+         * Uncomment the below line to for timer running for internet check
+         */
+
+        // setInterval(this.checkConnectivity, 5000)
+    }
+
+    checkConnectivity() {
+        isOnline().then(online => {
+
+            if (!online) {
+                Alert.alert('Lost Connectivity', 'Please check with your internet connection')
+            }
+            else {
+                console.log('is in ONLINE: ',online);
+            }
+        })
+    }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+
+          <TouchableOpacity
+
+              activeOpacity={0.75}
+
+              onPress={() => {
+
+              console.log('Checking online status')
+
+              this.checkConnectivity()
+
+          }}>
+              <Text> Tap to check internet connection </Text>
+          </TouchableOpacity>
+
       </View>
     );
   }
