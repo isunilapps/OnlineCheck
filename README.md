@@ -1,3 +1,32 @@
+
+    In Component add this method and call it in didMount with specified time (in milli seconds)
+
+    checkConnectivity() {
+        isOnline().then(online => {
+            if (!online) {
+                Alert.alert('Lost Connectivity', 'Please check internet connection')
+            }
+            else {
+                console.log('is ONLiNE: ',online);
+            }
+        })
+    }
+    
+    componentDidMount() {
+        setInterval(this.checkConnectivity, 5000)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
