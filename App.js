@@ -8,7 +8,7 @@ export default class App extends Component {
 
     componentDidMount() {
         /**
-         * Uncomment the below line to for timer running for internet check
+         * Uncomment the below line, for timer, run to check internet connectivity
          */
 
         // setInterval(this.checkConnectivity, 5000)
@@ -32,7 +32,8 @@ export default class App extends Component {
 
           <TouchableOpacity
 
-              activeOpacity={0.75}
+              style={{backgroundColor:"rgba(0,0,0,0.4)", borderRadius:5}}
+              activeOpacity={0.6}
 
               onPress={() => {
 
@@ -41,7 +42,7 @@ export default class App extends Component {
               this.checkConnectivity()
 
           }}>
-              <Text> Tap to check internet connection </Text>
+              <Text style={{color:'white'}}> Tap to check internet connection </Text>
           </TouchableOpacity>
 
       </View>
