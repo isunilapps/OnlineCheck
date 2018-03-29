@@ -1,29 +1,41 @@
+ Follow this
 
-    In Component add this method and call it in didMount with specified time (in milli seconds)
-
-    checkConnectivity() {
-        isOnline().then(online => {
-            if (!online) {
-                Alert.alert('Lost Connectivity', 'Please check internet connection')
-            }
-            else {
-                console.log('is ONLiNE: ',online);
-            }
-        })
-    }
+    Add
     
-    componentDidMount() {
-        setInterval(this.checkConnectivity, 5000)
-    }
-
-
-
-
-
-
-
-
-
+        1. Dependencies installations
+        
+            a.
+                sudo npm i --save is-online
+            
+            or
+            
+            b.
+                in package.json
+                    "dependencies": {
+                        "is-online": "^7.0.0",
+                    }
+                    
+                    after adding this needed
+                        "sudo npm i"
+            
+        2. const isOnline = require('is-online'); // Have this variable available in that Component
+        
+        3.
+            checkConnectivity() {
+                isOnline().then(online => {
+                    if (!online) {
+                        Alert.alert('Lost Connectivity', 'Please check internet connection')
+                    }
+                    else {
+                        console.log('is ONLiNE: ',online);
+                    }
+                })
+            }
+            
+        4.
+            componentDidMount() {
+                setInterval(this.checkConnectivity, 5000)
+            }
 
 
 
