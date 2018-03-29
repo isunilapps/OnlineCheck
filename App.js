@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, Alert, TouchableOpacity } from 'react-native';
 
 
-const isOnline = require('is-online');
-
 export default class App extends Component {
 
     componentDidMount() {
@@ -11,10 +9,12 @@ export default class App extends Component {
          * Uncomment the below line, for timer, run to check internet connectivity
          */
 
-        // setInterval(this.checkConnectivity, 5000)
+        setInterval(this.checkConnectivity, 5000) // Set duration in milli seconds.. here 5000 means 5 seconds
     }
 
     checkConnectivity() {
+        const isOnline = require('is-online');
+
         isOnline().then(online => {
 
             if (!online) {

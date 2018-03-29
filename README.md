@@ -17,11 +17,11 @@
                     
                     after adding this needed
                         "sudo npm i"
-            
-        2. const isOnline = require('is-online'); // Have this variable available in that Component
         
-        3.
+        2.
             checkConnectivity() {
+                const isOnline = require('is-online');
+                
                 isOnline().then(online => {
                     if (!online) {
                         Alert.alert('Lost Connectivity', 'Please check internet connection')
@@ -32,9 +32,9 @@
                 })
             }
             
-        4.
+        3.
             componentDidMount() {
-                setInterval(this.checkConnectivity, 5000)
+                setInterval(this.checkConnectivity, 5000) // Set duration in milli seconds.. here 5000 means 5 seconds
             }
 
 
