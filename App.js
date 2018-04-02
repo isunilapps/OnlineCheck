@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, Alert, TouchableOpacity } from 'react-native';
 
 
-const isOnline = require('is-online');
+var alertExist = false
 
 export default class App extends Component {
 
@@ -11,14 +11,26 @@ export default class App extends Component {
          * Uncomment the below line, for timer, run to check internet connectivity
          */
 
-        // setInterval(this.checkConnectivity, 5000)
+        setInterval(this.checkConnectivity, 5000)
     }
 
     checkConnectivity() {
+        const isOnline = require('is-online');
+
         isOnline().then(online => {
 
             if (!online) {
-                Alert.alert('Lost Connectivity', 'Please check with your internet connection')
+                if (!alertExist) {
+                    alertExist = true
+
+                    Alert.alert(
+                        'Lost Connectivity',
+                        'Please check with your internet connection',
+                        [
+                            {text: 'OK', onPress: () => alertExist = false, style: 'cancel'},
+                        ]
+                    )
+                }
             }
             else {
                 console.log('is in ONLINE: ',online);
