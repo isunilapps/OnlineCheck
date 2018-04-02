@@ -8,7 +8,8 @@ export default class App extends Component {
 
     componentDidMount() {
         /**
-         * Uncomment the below line, for timer, run to check internet connectivity
+         * Uncomment the below line, for timer, run to check internet connectivity with
+         * specified time interval in milli seconds (5000 milli seconds is 5 seconds)
          */
 
         setInterval(this.checkConnectivity, 5000)

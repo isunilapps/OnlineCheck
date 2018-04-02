@@ -18,23 +18,41 @@
                     after adding this needed
                         "sudo npm i"
             
-        2. const isOnline = require('is-online'); // Have this variable available in that Component
+        2. var alertExist = false //Have this variable available in that Component (declare as global)
         
         3.
             checkConnectivity() {
+                const isOnline = require('is-online');
+        
                 isOnline().then(online => {
+        
                     if (!online) {
-                        Alert.alert('Lost Connectivity', 'Please check internet connection')
+                        if (!alertExist) {
+                            alertExist = true
+        
+                            Alert.alert(
+                                'Lost Connectivity',
+                                'Please check with your internet connection',
+                                [
+                                    {text: 'OK', onPress: () => alertExist = false, style: 'cancel'},
+                                ]
+                            )
+                        }
                     }
                     else {
-                        console.log('is ONLiNE: ',online);
+                        console.log('is in ONLINE: ',online);
                     }
                 })
             }
             
         4.
             componentDidMount() {
-                setInterval(this.checkConnectivity, 5000)
+                /**
+                 * Uncomment the below line, for timer, run to check internet connectivity with
+                 * specified time interval in milli seconds (5000 milli seconds is 5 seconds)
+                 */
+        
+                //setInterval(this.checkConnectivity, 5000)
             }
 
 
